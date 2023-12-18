@@ -1,4 +1,5 @@
 # Consuming APIs with Express 
+<img src="https://i.imgur.com/pOhOMgk.jpg" width="40%">
 
 ## Objective 
 
@@ -9,6 +10,75 @@ What we've been building in our movies lesson is actually what is known as an ap
 In this lesson, we will gain an understanding of API consumption using a library called Axios, as we build an API that fetches dog images.  We will use ejs templates, as we have been doing, to display these images.  We will also touch on testing APIs using an awesome tool called Postman.  
 
 Let's dive in! 
+
+
+## What Kind of API are we Talking About?
+
+The term _API_ is quite vague and used within several contexts.
+
+First, it's an acronym that stands for **Application Programming Interface**.
+
+_Application Programming Interfaces_ define the set of methods and properties made available by a library, a framework, an operating system, or any piece of software that programmers can use to access the software's functionality. 
+
+However, in today's lesson we're interested in external (third-party) APIs that respond with data when we send them requests.  
+
+
+## Why Consume Third-Party APIs?
+
+Lots of useful data is available via APIs across the Internet - often free of charge!
+
+Apps we create can consume this data in interesting ways!
+
+
+## 👉 You Do - Research Available APIs (2 minutes)
+
+[This GitHub repo](https://github.com/public-apis/public-apis) maintains a list of well organized Public APIs.
+
+Pick one that's interesting to you and identify the following:
+
+- The name of the API
+- What kind of data it makes available
+- It's access requirements and limitations:
+  - Is it completely free, free up to a certain usage, or paid from the start?
+  - Does it require authentication (usually via a token)?
+
+
+## I Have a Simple Request
+
+It only takes a simple `GET` request to one of the API's available endpoints to retrieve data.
+
+Since we can issue `GET` requests straight from the browser's address bar, let's retrieve all the data you'd ever want to know about Bulbasaur:
+
+```
+https://pokeapi.co/api/v2/pokemon/1
+```
+
+<details>
+<summary>
+❓ What data format was returned?
+</summary>
+<hr>
+
+**JSON (JavaScript Object Notation)**, the same format as, for example, a `package.json` file.
+
+<hr>
+</details>
+
+
+## Different Architectural Approaches
+
+When accessing APIs, there are a few different architectural approaches we can take:
+
+<img src="https://i.imgur.com/Hflu0K0.png">
+
+- The top-approach is the recommended approach with traditional web apps that respond to client requests with a new HTML page.  Access tokens remain secure on the server.
+
+- The middle-approach is recommended for single-page apps (SPAs) like the MERN-stack apps we'll develop in unit 4.
+
+- The bottom-approach is not recommended because access tokens would have to be sent to the browser.  Because of this, many APIs will disallow this architecture by not implementing [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) (discussed in a later lesson) and the request will fail.
+
+Since we will be developing traditional web apps in this and next unit, we'll use the **top-approach** in this lesson.
+
 
 ## Getting Started
 
@@ -30,9 +100,11 @@ touch App.js
 code . 
 ```
 
+
 ## What is an API?
 
 An API(Application Programming Interface) allows different software systems to communicate with each other.  In this lesson, we will focus on consuming a public API to retrieve and display dog images.  
+
 
 ## Express App Setup 
 
@@ -69,6 +141,7 @@ We can install it using:
 ```
 npm i axios
 ```
+
 
 ## Defining our first endpoint and integrating the Dog API 
 
@@ -165,6 +238,7 @@ app.get('/', async (req, res) => {
 });
 ```
 
+
 ## Testing with Postman
 
 It's all fine and well to test our endpoints in the browser, but there's a really cool tool called Postman that helps us to not only test API endpoints, but also provides us with the code to make those requests.  It especialy can be helpful when making calls to third party APIs.  
@@ -185,7 +259,7 @@ Let's explore Postman to test API endpoints:
 
 ## In Conclusion 
 
-Congratulations! In this lesson, you've learned the fundamentals of consuming APIs using an Express application. You built a simple app that fetches dog images from the Dog API and explored API testing using Postman. Now you have the ability to test a backend without a browser, or any other kind of frontend client.  Now that you know the basics, consider integrating an API in your unit 2 projects.  Check out this list of free APIs to get some ideas: 
+Congratulations! In this lesson, you've learned the fundamentals of consuming APIs using an Express application. You built a simple app that fetches dog images from the Dog API and explored API testing using Postman. Now you have the ability to test a backend without a browser, or any other kind of frontend client.  Now that you know the basics, consider integrating an API in your unit 2 projects.  Check out this list of free APIs to get some ideas. 
 
 ### Free APIs for Your Projects: 
 
