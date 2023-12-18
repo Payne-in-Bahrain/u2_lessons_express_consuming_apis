@@ -5,7 +5,7 @@
 
 The goal of this lesson is to learn how to consume third-party APIs using an Express application.  
 
-What we've been building in our movies lesson is actually what is known as an application programming interface.  Application programming interfaces, or APIs as they're more commonly known, allow different software systems to communicate with each other.  For example, in our next unit we will build a React frontend that communicates with our Express backend.  Our Express backend will be an API with different restful endpoints that send information in a format called json to the react frontend.  Additionally, we can use APIs that others have built to get information and bring additional functionality into our applications.  
+The backend that we've been building with our express apps is actually what is known as an application programming interface.  Application programming interfaces, or APIs as they're more commonly known, allow different software systems to communicate with each other.  For example, in our next unit we will build a React frontend that communicates with our Express backend.  Our Express backend will be an API with different restful endpoints that send information in a format called json to the react frontend.  Additionally, we can use APIs that others have built to get information and bring additional functionality into our applications.  
 
 In this lesson, we will gain an understanding of API consumption using a library called Axios, as we build an API that fetches dog images.  We will use ejs templates, as we have been doing, to display these images.  We will also touch on testing APIs using an awesome tool called Postman.  
 
