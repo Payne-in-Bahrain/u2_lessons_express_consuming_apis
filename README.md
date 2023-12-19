@@ -89,14 +89,14 @@ Open your terminal and navigate to the folder where you want to create your proj
 2. **Create Project Directory:**
 
 ```
-mkdir express-dog-api
-cd express-dog-api 
+mkdir express-cat-api
+cd express-cat-api 
 ```
 
 3. **Create an App.js file:**
 
 ```
-touch App.js
+touch app.js
 code . 
 ```
 
