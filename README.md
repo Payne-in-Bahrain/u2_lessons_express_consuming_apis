@@ -152,21 +152,28 @@ Let's create our first endpoint.  We'll make a `get` request to the `/'.  Don't 
 const axios = require('axios');
 
 app.get('/', async (req, res) => {
-  const apiUrl = 'https://dog.ceo/api/breeds/image/random'
+  const catFactsUrl = 'https://catfact.ninja/facts';
+
   try {
-    const response = await axios.get(apiUrl);
-    const imageUrl = response.data.message;
-    res.render('index', { imageUrl });
+    const response = await axios.get(catFactsUrl);
+    
+    if (response.status !== 200) {
+      throw new Error(`Failed to fetch cat facts. Status: ${response.status}`);
+    }
+
+    const catFacts = response.data.data;
+
+    res.json(catFacts);
   } catch (error) {
-    console.error('Error fetching image:', error);
-    res.status(500).send('Error fetching image');
+    console.error('Error fetching cat facts:', error);
+    res.status(500).send('Error fetching cat facts');
   }
 });
 ```
 
-Notice above how we call the get method from axios on the apiUrl.  We await the response using the `await` keyword, just as when calling asynchronous mongoose methods.  Our call to the apiUrl results in a promise that is either rseovled, or rejected.  In the case it is successful, we access the message property on the data attribute of the response object and assign it to the imageUrl.  We then render an `index` template and pass the imageUrl as part of the locals object. 
+Notice above how we call the get method from axios on the apiUrl.  We await the response using the `await` keyword, just as when calling asynchronous mongoose methods.  Our call to the apiUrl results in a promise that is either rseovled, or rejected.  In the case it is successful, we access the data property on the data attribute of the response object and assign it to a variable called CatFacts.  For now we are simply sending a json response, which we can check in our browser, or better yet, Postman!  
 
-Next, let's create our `index` EJS template.
+Next, let's create our `index` EJS template, so that we can display our catfacts.
 
 1. **Create a views folder:**
 
@@ -185,58 +192,70 @@ touch views/index.ejs
 and then past the following into your index.ejs:
 
 ```
-<html>
-  <head>
-    <title>Dog Image Viewer</title>
-  </head>
-  <body>
-    <img src="<%= imageUrl %>" alt="Dog" style="max-width: 100%;" />
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kitty Facts</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+    }
+
+    .fact-container {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>≽^•⩊•^≼ Kitty Facts ≽^•⩊•^≼</h1>
+  
+  <!-- Display cat facts -->
+  <div class="fact-container">
+    <h2>All Kitty Facts:</h2>
+    <% catFacts.forEach(fact => { %>
+      <p><%= fact %></p>
+    <% }); %>
+  </div>
+</body>
 </html>
 ```
 
-Now that we have created our template and are displaying the dog image, let's allow for some user interaction by implenting the following user story:
+Now it's your turn.  Let's update our route to render the index, instead of responding with json.  Make sure to pass the catFacts variable to the template using the locals object as the second argument of the render function. 
 
-`As a user, I want to be able to enter a dog breed and return an image related to that breed.`
+Awesome!  If you navigate back to `localhost:3000` you should see a list of... `[object Object]`.  
 
-First, let's add a form in our views right below the `img` element:
-
-```
-<body>
-    <img src="<%= imageUrl %>" alt="Dog" style="max-width: 100%;" />
-    <form action="/" method="get">
-      <input type="text" name="breed" id="dogInput" placeholder="Enter a dog breed" />
-      <button type="submit">Fetch!</button>
-    </form>
-</body>
-```
-
-For the form action, we can actually use the same `/` endpath for intially calling our API and dispalying our index page.  However, we must do some refactoring to our route.  Adding a conditional to check for a req.body will handle the case for a user entering a dog.  
-
-Modify the `get /` endpath to be the following. 
+That's actually to be expected.  If you recall the structure of our json, it looked something like this:
 
 ```
-app.get('/', async (req, res) => {
-  try {
-    let imageUrl;
-
-    // Check if a specific breed is requested
-    if (req.query.breed) {
-      const response = await axios.get(`https://dog.ceo/api/breed/${req.query.breed}/images/random`);
-      imageUrl = response.data.message;
-    } else {
-      // If no specific breed, fetch a random dog image
-      const response = await axios.get('https://dog.ceo/api/breeds/image/random');
-      imageUrl = response.data.message;
-    }
-
-    res.render('index', { imageUrl });
-  } catch (error) {
-    console.error('Error fetching image:', error);
-    res.status(500).send('Error fetching image');
-  }
-});
+"data": [
+        {
+            "fact": "Unlike dogs, cats do not have a sweet tooth. Scientists believe this is due to a mutation in a key taste receptor.",
+            "length": 114
+        },
+        {
+            "fact": "When a cat chases its prey, it keeps its head level. Dogs and humans bob their heads up and down.",
+            "length": 97
+        }, etc... 
+]
 ```
+
+If you don't recall that, we can always test the cat facts endpoint with Postman.
+
+In any case, it looks like we need to access the fact property of each object.  We could do that in our ejs template, but it's usually better to do that kind of data processing in our controller. 
+
+Let's go back and refactor our route to look like the following:
+
+```
+const catFacts = response.data.data;
+formattedCatFacts = catFacts.map(fact => fact.fact);
+  
+res.render('index', { formattedCatFacts })
+```
+
+Notice how we mad use of the awesome map method to create a new array where every item is just the fact.  Now since we're passing this new formatted array, when we refresh our browser, we should see the facts being displayed!
 
 
 ## Testing with Postman
@@ -252,7 +271,7 @@ Download and install Postman from [https://www.postman.com/](https://www.postman
 Let's explore Postman to test API endpoints:
 
 1. Open Postman and create a new request.
-2. Use the request URL [https://dog.ceo/api/breeds/image/random](https://dog.ceo/api/breeds/image/random).
+2. Use the request URL [https://catfact.ninja/facts](https://catfact.ninja/facts).
 3. Send the request.
 4. Observe the response and explore different features in Postman.
 
