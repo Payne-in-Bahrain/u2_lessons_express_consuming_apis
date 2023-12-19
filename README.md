@@ -1,5 +1,5 @@
 # Consuming APIs with Express 
-<img src="https://i.imgur.com/pOhOMgk.jpg" width="40%">
+<img src="https://i.imgur.com/J6GgzUD.jpg" width="40%">
 
 ## Objective 
 
@@ -252,7 +252,7 @@ Let's go back and refactor our route to look like the following:
 const catFacts = response.data.data;
 formattedCatFacts = catFacts.map(fact => fact.fact);
   
-res.render('index', { formattedCatFacts })
+res.render('index', { catsFacts: formattedCatFacts })
 ```
 
 Notice how we mad use of the awesome map method to create a new array where every item is just the fact.  Now since we're passing this new formatted array, when we refresh our browser, we should see the facts being displayed!
