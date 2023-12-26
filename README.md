@@ -175,7 +175,7 @@ app.get('/', async (req, res) => {
 });
 ```
 
-Notice above how we call the get method from axios on the apiUrl.  We await the response using the `await` keyword, just as when calling asynchronous mongoose methods.  Our call to the apiUrl results in a promise that is either rseovled, or rejected.  In the case it is successful, we access the data property on the data attribute of the response object and assign it to a variable called CatFacts.  For now we are simply sending a json response, which we can check in our browser, or better yet, Postman!  
+Notice above how we call the get method from axios on the apiUrl.  We await the response using the `await` keyword, just as when calling asynchronous mongoose methods.  Our call to the apiUrl results in a promise that is either rseovled, or rejected.  In the case it is successful, we access the data property on the data attribute of the response object and assign it to a variable called catFacts.  For now we are simply sending a json response, which we can check in our browser, or better yet, Postman!  
 
 Next, let's create our `index` EJS template, so that we can display our catfacts.
 
