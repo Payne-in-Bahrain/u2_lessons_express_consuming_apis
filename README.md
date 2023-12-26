@@ -227,7 +227,7 @@ and then past the following into your index.ejs:
 </html>
 ```
 
-Now it's your turn.  Let's update our route to render the index, instead of responding with json.  Make sure to pass the catFacts variable to the template using the locals object as the second argument of the render function. 
+Now it's your turn.  Let's update our route to render the index.ejs, instead of responding with json.  Make sure to pass the catFacts variable to the template using the context object as the second argument of the render function. 
 
 Awesome!  If you navigate back to `localhost:3000` you should see a list of... `[object Object]`.  
 
