@@ -5,7 +5,7 @@
 
 The goal of this lesson is to learn how to consume third-party APIs using an Express application.  
 
-The backend that we've been building with our express apps is actually what is known as an application programming interface.  Application programming interfaces, or APIs as they're more commonly known, allow different software systems to communicate with each other.  For example, in our next unit we will build a React frontend that communicates with our Express backend.  Our Express backend will be an API with different restful endpoints that send information in a format called json to the react frontend.  Additionally, we can use APIs that others have built to get information and bring additional functionality into our applications.  
+The backend that we've been building with our express apps is actually what is known as an application programming interface.  Application programming interfaces, or APIs as they're more commonly known, allow different software systems to communicate with each other.  For example, in our next unit we will build a React frontend that communicates with our Express backend.  Our Express backend will be an API with different restful endpoints that send information in a format called JSON to the react frontend.  Additionally, we can use APIs that others have built to get information and bring additional functionality into our applications.  
 
 In this lesson, we will gain an understanding of API consumption using a library called Axios, as we build an app that fetches cat images.  We will use ejs templates, as we have been doing, to display these images.  We will also touch on testing APIs using an awesome tool called Postman.  
 
@@ -22,9 +22,9 @@ _Application Programming Interfaces_ define the set of methods and properties ma
 
 However, in today's lesson we're interested in external (third-party) APIs that respond with data when we send them requests.  This is an example of what is specifically known as RESTFUL API. 
 
-REST (Representational State Transfer) is an architectural style for designing networked applications (simply, applications that communicate over a network like the internet), and RESTful APIs adhere to the principles of REST. These APIs use standard HTTP methods (such as GET, POST, PUT, DELETE) to perform operations on resources, and they typically respond with data in a structured format, often in JSON.
+REST, or Representational State Transfer, is an architectural style for designing networked applications—basically, applications that talk to each other over the internet. RESTful APIs, which follow the principles of REST, use standard HTTP methods (like GET, POST, PUT, DELETE) to do things with resources (which can be data, services, or anything else). The APIs usually respond with data in a structured format, commonly JSON, showing the current state of a resource (for example, fetching and displaying a specific Facebook post).
 
-When you make a request to a RESTful API, you are usually interacting with a remote server that provides a set of endpoints representing different resources (e.g., /users, /products). Each endpoint corresponds to a specific operation or resource, and
+When you make a request to a RESTful API, you are usually interacting with a remote server that provides a set of endpoints representing different resources (e.g., /users, /products). Each endpoint corresponds to a specific operation or resource, and the server responds with the requested data or performs the requested action.
 
 
 ## Why Consume Third-Party APIs?
