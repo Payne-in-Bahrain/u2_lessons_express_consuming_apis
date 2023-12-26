@@ -179,7 +179,7 @@ Notice above how we call the get method from axios on the apiUrl.  We await the 
 
 _a little more on promises:_ 
 
-Asynchronous methods in JavaScript often return promises. These promises represent the eventual completion or failure of an asynchronous operation, such as retrieving data from a database. When the asynchronous operation is successful, the promise is resolved with the result data. On the other hand, if there is an error during the operation, the promise is rejected with an error object. Developers can then use .then() to handle successful outcomes and .catch() to handle errors when working with promises.  For example, we could rewrite the async/await above using the following syntax:
+Asynchronous methods in JavaScript often return promises. These promises represent the eventual completion or failure of an asynchronous operation, such as retrieving data from a database. When the asynchronous operation is successful, the promise is resolved with the result data. On the other hand, if there is an error during the operation, the promise is rejected with an error object. Developers can then use .then() to handle successful outcomes and .catch() to handle errors when working with promises.  For example, we could rewrite the `async/await` above using the following syntax that makes use of promise chaining:
 
 ```
 axios.get(catFactsUrl)
@@ -193,7 +193,7 @@ axios.get(catFactsUrl)
   });
 ```
 
-Using async await, however, is a more modern syntax and the one we will give preference to in this cohort.  
+Using `async/await`, however, is a more modern, clearner syntax and the one we will give preference to in this cohort.  
 
 Next, let's create our `index` EJS template, so that we can display our catfacts.
 
