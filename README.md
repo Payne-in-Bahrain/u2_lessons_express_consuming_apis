@@ -20,7 +20,11 @@ First, it's an acronym that stands for **Application Programming Interface**.
 
 _Application Programming Interfaces_ define the set of methods and properties made available by a library, a framework, an operating system, or any piece of software that programmers can use to access the software's functionality. 
 
-However, in today's lesson we're interested in external (third-party) APIs that respond with data when we send them requests.  
+However, in today's lesson we're interested in external (third-party) APIs that respond with data when we send them requests.  This is an example of what is specifically known as RESTFUL API. 
+
+REST (Representational State Transfer) is an architectural style for designing networked applications, and RESTful APIs adhere to the principles of REST. These APIs use standard HTTP methods (such as GET, POST, PUT, DELETE) to perform operations on resources, and they typically respond with data in a structured format, often in JSON.
+
+When you make a request to a RESTful API, you are usually interacting with a remote server that provides a set of endpoints representing different resources (e.g., /users, /products). Each endpoint corresponds to a specific operation or resource, and
 
 
 ## Why Consume Third-Party APIs?
