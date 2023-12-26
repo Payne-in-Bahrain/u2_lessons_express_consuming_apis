@@ -256,15 +256,15 @@ Let's go back and refactor our route to look like the following:
 const catFacts = response.data.data;
 formattedCatFacts = catFacts.map(fact => fact.fact);
   
-res.render('index', { catsFacts: formattedCatFacts })
+res.render('index', { catFacts: formattedCatFacts })
 ```
 
-Notice how we mad use of the awesome map method to create a new array where every item is just the fact.  Now since we're passing this new formatted array, when we refresh our browser, we should see the facts being displayed!
+Notice how we made use of the awesome map method to create a new array where every item is just the fact.  Now, since we're passing this newly formatted array to the template as catFacts, when we refresh our browser, we should see the facts being displayed!
 
 
 ## Testing with Postman
 
-It's all fine and well to test our endpoints in the browser, but there's a really cool tool called Postman that helps us to not only test API endpoints, but also provides us with the code to make those requests.  It especialy can be helpful when making calls to third party APIs.  
+It's all fine and well to test our endpoints in the browser, but there's a really cool tool called Postman that helps us to not only test API endpoints, but also provides us with the code to make API requests in different programming languages and environments.  It is especially helpful when making calls to third party APIs.  
 
 1. **Install Postman:**
 
