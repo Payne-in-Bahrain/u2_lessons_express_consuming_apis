@@ -177,6 +177,24 @@ app.get('/', async (req, res) => {
 
 Notice above how we call the get method from axios on the apiUrl.  We await the response using the `await` keyword, just as when calling asynchronous mongoose methods.  Our call to the apiUrl results in a promise that is either rseovled, or rejected.  In the case it is successful, we access the data property on the data attribute of the response object and assign it to a variable called catFacts.  For now we are simply sending a json response, which we can check in our browser, or better yet, Postman!  
 
+_a little more on promises:_ 
+
+Asynchronous methods in JavaScript often return promises. These promises represent the eventual completion or failure of an asynchronous operation, such as retrieving data from a database. When the asynchronous operation is successful, the promise is resolved with the result data. On the other hand, if there is an error during the operation, the promise is rejected with an error object. Developers can then use .then() to handle successful outcomes and .catch() to handle errors when working with promises.  For example, we could rewrite the async/await above using the following syntax:
+
+```
+axios.get(catFactsUrl)
+  .then(response => {
+    // Handle successful response here
+    console.log(response.data);
+  })
+  .catch(error => {
+    // Handle error here
+    console.error(error);
+  });
+```
+
+Using async await, however, is a more modern syntax and the one we will give preference to in this cohort.  
+
 Next, let's create our `index` EJS template, so that we can display our catfacts.
 
 1. **Create a views folder:**
