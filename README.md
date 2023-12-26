@@ -340,6 +340,15 @@ Congratulations! In this lesson, you've learned the fundamentals of consuming AP
     - **API Documentation:** [CoinGecko API](https://www.coingecko.com/en/api)
     - **Description:** Retrieve cryptocurrency data, including prices, market data, and more.
 
+10. **Jikan API:**
+    - **API Documentation:** [Jikan API](https://jikan.moe/)
+    - **Description:** Access anime and manga-related data, including information about shows, characters, and more.
+
+11. **OpenAI API:**
+    - **API Documentation:** [OpenAI API](https://beta.openai.com/docs/)
+    - **Description:** Utilize OpenAI's language models and AI capabilities for various natural language processing tasks.
+
+
 Remember to review each API's documentation for information on how to make requests and any authentication requirements. These APIs cover a range of topics, so you can choose one that aligns with your interests or project goals. Happy coding!
 
 
