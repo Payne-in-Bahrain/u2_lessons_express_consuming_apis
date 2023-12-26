@@ -107,7 +107,7 @@ code .
 
 ## What is an API?
 
-An API(Application Programming Interface) allows different software systems to communicate with each other.  In this lesson, we will focus on consuming a public API to retrieve and display dog images.  
+An API(Application Programming Interface) allows different software systems to communicate with each other.  In this lesson, we will focus on consuming a public API to retrieve and display cat images.  
 
 
 ## Express App Setup 
