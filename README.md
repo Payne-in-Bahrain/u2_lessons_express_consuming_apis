@@ -1,5 +1,5 @@
 # Consuming APIs with Express 
-<img src="https://i.imgur.com/J6GgzUD.jpg" width="40%">
+<img src="https://i.imgur.com/J6GgzUD.jpg" width="60%">
 
 ## Objective 
 
